@@ -1,4 +1,7 @@
 //A visitor enters the website to find a list of available freelancers;
+//Each freelancer has a Name, Occupation, and Starting Price for services;
+//The visitor observes "Alice", the writer, with a starting price of $30;
+//The visitor observes "Bob", the teacher, with a starting price of $50;
 const freelancers = [
     { name: "Alice", price: 25, occupation: "gardener"},
     { name: "Dr. Pressure", price: 51, occupation: "programmer" },
@@ -10,18 +13,12 @@ const freelancers = [
     { name: "Prof. Goose", price: 72, occupation: "driver" },
   ];
   
-//   const formattedFreelancers = freelancers.map(({ name, occupation, price }) => ({
-//     Name: name,
-//     Occupation: occupation,
-//     Price: price,
-//   }));
-  
-//   console.log(formattedFreelancers);
+  const mapFreelancers = freelancers.map(({ name, occupation, price }) => ({
+    Name: name,
+    Occupation: occupation,
+    Price: price,
+  }));
 
-  
-//Each freelancer has a Name, Occupation, and Starting Price for services;
-//The visitor observes "Alice", the writer, with a starting price of $30;
-//The visitor observes "Bob", the teacher, with a starting price of $50;
 //The visitor finds a message displaying the average price of the list of freelancers;
 
 //Create variables/elements
@@ -39,6 +36,13 @@ h1Element.textContent = "Freelance Services";
 body.appendChild(h1Element);
 body.appendChild(infoElement);
 infoElement.appendChild(ulElement);
+
+// Iterate through the formattedFreelancers array and add them to the ul
+mapFreelancers.forEach(freelancer => {
+    const liElement = document.createElement("li");
+    liElement.textContent = `Name: ${freelancer.Name}, Occupation: ${freelancer.Occupation}, Price: $${freelancer.Price}`;
+    ulElement.appendChild(liElement);
+  });
 
 
 //Set attributes/'style' elements
