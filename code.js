@@ -24,11 +24,23 @@ const freelancers = [
     Price: price,
   }));
 
-//const flexContainer = document.createElement("section");
+//Creat an element to contain the average price of all freelancers
+const averagePriceElement = document.createElement("p");
 
 //Add content
 h1Element.textContent = "Freelance Services";
-
+// Iterate through the formattedFreelancers array and add them to the ul
+// mappedFreelancers.forEach(freelancer => {
+//     const liElement = document.createElement("li");
+//     const freelancerName = `Name: ${freelancer.Name}`;
+//     const freelancerOccupation = `Occupation: ${freelancer.Occupation}`;
+//     const freelancerPrice = `Price: $${freelancer.Price}`;
+// })
+mappedFreelancers.forEach(freelancer => {
+    const liElement = document.createElement("li");
+    liElement.textContent = `Name: ${freelancer.name}, Occupation: ${freelancer.Occupation}, Price: $${freelancer.Price}`;
+    ulElement.appendChild(liElement);
+});
 
 //Append variables/elements
 body.appendChild(h1Element);
@@ -36,32 +48,27 @@ body.appendChild(infoElement);
 infoElement.appendChild(ulElement);
 
 //Calculate the average price of all freelancers
+//Create a variable called `totalPrice`, starting at `0`
 const totalPrice = mappedFreelancers.reduce((sum, freelancer) => {
+//for every freelancer in the array add the `price` to the totalPrice
     return sum + freelancer.Price;
   }, 0);
-  
+  //create a variable called numberOfFreelancers and set the value equal to length of array
   const numberOfFreelancers = mappedFreelancers.length;
+  //calculate the average by dividing the total price by the number of freelancers
   const averagePrice = totalPrice / numberOfFreelancers;
+  //display the total average price
   console.log(averagePrice);
-// // Calculate the average price of all freelancers
-// const totalPrices = formattedFreelancers.reduce((sum, freelancer) => sum + freelancer.Price, 0);
-// const averagePrice = totalPrices / formattedFreelancers.length;
 
-// // Display the average price
-// const averagePriceElement = document.createElement("p");
-// averagePriceElement.textContent = `Average Price: $${averagePrice.toFixed(2)}`;
+  //The visitor finds a message displaying the average price of the list of freelancers;
+
+
+  // // Display the average price
+ averagePriceElement.textContent = `Average Price: $${averagePrice}`;
 
 // // Append the average price element to the section
-// infoSection.appendChild(averagePriceElement);
-
-// Iterate through the formattedFreelancers array and add them to the ul
-mappedFreelancers.forEach(freelancer => {
-    const liElement = document.createElement("li");
-    liElement.textContent = `Name: ${freelancer.name}, Occupation: ${freelancer.Occupation}, Price: $${freelancer.Price}`;
-    ulElement.appendChild(liElement);
-});
-
-//The visitor finds a message displaying the average price of the list of freelancers;
+infoElement.appendChild(averagePriceElement);
 
 
 //Set attributes/'style' elements
+//User story did not call for any styling, will do to play around
